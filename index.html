@@ -1382,14 +1382,14 @@ body {
 }
 
 .why-num {
-  font-family: 'JetBrains Mono', monospace !important;
-  font-style: normal !important;
-  font-weight: 500 !important;
-  font-size: 9px !important;
-  letter-spacing: 0.28em;
+  font-family: 'Fraunces', serif !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  font-size: 110px !important;
+  letter-spacing: -0.02em !important;
   color: var(--gold) !important;
-  line-height: 1.2 !important;
-  padding-top: 14px;
+  line-height: 0.8 !important;
+  padding-top: 0 !important;
 }
 
 .why-claim {
@@ -1465,12 +1465,7 @@ body {
 body { font-size: 17px !important; line-height: 1.65 !important; }
 
 /* === The Pitch (§ I) — line-length is the killer === */
-.why-num {
-  font-size: 16px !important;
-  letter-spacing: 0.24em !important;
-  color: var(--ink) !important;
-  font-weight: 500 !important;
-}
+/* why-num styled globally above */
 .why-claim {
   font-size: clamp(32px, 4vw, 48px) !important;
   line-height: 1.05 !important;
@@ -1822,7 +1817,7 @@ td, th,
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  border: 1px solid var(--rule-strong);
+  border: none !important;
   overflow: hidden;
   background: var(--bg-deep);
 }
@@ -1921,7 +1916,7 @@ td, th,
   width: 100%;
   aspect-ratio: 16 / 9;
   background: var(--bg-elev);
-  border: 1px solid var(--rule-strong);
+  border: none !important;
   display: block;
   object-fit: cover;
 }
@@ -1964,7 +1959,14 @@ td, th,
   .why-item { padding: 28px 0 !important; gap: 12px !important; }
   .why-claim { font-size: clamp(26px, 7vw, 36px) !important; }
   .why-proof { font-size: 16px !important; }
-  .why-num { font-size: 14px !important; }
+  .why-num {
+    font-family: 'Fraunces', serif !important;
+    font-style: italic !important;
+    font-size: 64px !important;
+    color: var(--gold) !important;
+    line-height: 1 !important;
+    margin-bottom: 8px !important;
+  }
 
   .opening-tagline-block { padding: 48px 0 24px !important; }
   .opening-tagline { font-size: clamp(32px, 9vw, 56px) !important; }
