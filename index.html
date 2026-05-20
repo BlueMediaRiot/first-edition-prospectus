@@ -3001,6 +3001,11 @@ document.addEventListener('DOMContentLoaded', () => {
       overlay.classList.add('hidden');
     });
     
+    // Fallback: If video is played through other means (like controls), hide overlay
+    video.addEventListener('play', () => {
+      overlay.classList.add('hidden');
+    });
+    
     // When video ends, show overlay again
     video.addEventListener('ended', () => {
       overlay.classList.remove('hidden');
