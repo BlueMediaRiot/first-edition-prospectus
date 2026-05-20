@@ -1812,6 +1812,104 @@ td, th,
   gap: 24px;
 }
 
+.video-grid.single-video {
+  grid-template-columns: 1fr;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--rule-strong);
+  overflow: hidden;
+  background: var(--bg-deep);
+}
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  border: none !important;
+  display: block;
+  object-fit: cover;
+}
+
+.video-play-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://cdn-cf-east.streamable.com/image/cvp9wm.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.5s;
+  z-index: 10;
+}
+
+.video-play-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Premium Play Button Aesthetics */
+.play-button-outer {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: rgba(10, 10, 10, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.play-button-inner {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bg-deep);
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.play-icon {
+  width: 28px;
+  height: 28px;
+  transform: translateX(2px);
+  transition: transform 0.3s ease;
+}
+
+/* Hover Effects */
+.video-play-overlay:hover .play-button-outer {
+  transform: scale(1.08);
+  background: rgba(10, 10, 10, 0.6);
+  border-color: var(--gold-bright);
+  box-shadow: 0 30px 60px rgba(212, 176, 97, 0.15), 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.video-play-overlay:hover .play-button-inner {
+  background: var(--gold-bright);
+  color: var(--bg-deep);
+}
+
+.video-play-overlay:hover .play-icon {
+  transform: translateX(3px) scale(1.1);
+}
+
 .video-frame {
   position: relative;
   display: flex;
@@ -1960,18 +2058,23 @@ td, th,
 <div class="page video-showcase">
   <div class="video-eyebrow">— Watch · The work</div>
   <h2 class="video-title">See it in motion.</h2>
-  <div class="video-grid">
+  <div class="video-grid single-video">
     <div class="video-frame">
-      <video controls="" playsinline="" preload="metadata" poster="https://cdn-cf-east.streamable.com/image/cvp9wm.jpg" src="First_Edition__The_AI-Native_Luxury_Wedding_Cinema_Pitch.mp4">
-        Your browser doesn't support embedded video.
-      </video>
-      <a href="First_Edition__The_AI-Native_Luxury_Wedding_Cinema_Pitch.mp4" target="_blank" rel="noopener" class="video-fallback">Open Cinema Pitch →</a>
-    </div>
-    <div class="video-frame">
-      <video controls="" playsinline="" preload="metadata" poster="https://cdn-cf-east.streamable.com/image/civg29.jpg" src="First_Edition__The_AI-Native_Luxury_Wedding_Studio.mp4">
-        Your browser doesn't support embedded video.
-      </video>
-      <a href="First_Edition__The_AI-Native_Luxury_Wedding_Studio.mp4" target="_blank" rel="noopener" class="video-fallback">Open Studio Presentation →</a>
+      <div class="video-container">
+        <video id="cinema-pitch-video" controls="" playsinline="" preload="metadata" poster="https://cdn-cf-east.streamable.com/image/cvp9wm.jpg" src="First_Edition__The_AI-Native_Luxury_Wedding_Cinema_Pitch.mp4">
+          Your browser doesn't support embedded video.
+        </video>
+        <div class="video-play-overlay" id="video-overlay">
+          <div class="play-button-outer">
+            <div class="play-button-inner">
+              <svg class="play-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 5V19L19 12L8 5Z" fill="currentColor"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="First_Edition__The_AI-Native_Luxury_Wedding_Cinema_Pitch.mp4" target="_blank" rel="noopener" class="video-fallback" style="align-self: center; margin-top: 8px;">Open Cinema Pitch →</a>
     </div>
   </div>
 </div>
@@ -2886,4 +2989,24 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 
 
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const overlay = document.getElementById('video-overlay');
+  const video = document.getElementById('cinema-pitch-video');
+  
+  if (overlay && video) {
+    overlay.addEventListener('click', () => {
+      video.play();
+      overlay.classList.add('hidden');
+    });
+    
+    // When video ends, show overlay again
+    video.addEventListener('ended', () => {
+      overlay.classList.remove('hidden');
+      video.load(); // Reset video state
+    });
+  }
+});
+</script>
 </body></html>
