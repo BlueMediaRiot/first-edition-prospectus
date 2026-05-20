@@ -2036,75 +2036,137 @@ td, th,
   cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: rgba(10, 10, 10, 0.65);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(212, 176, 97, 0.35);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  gap: 14px;
+  padding: 10px 20px 10px 14px;
+  border-radius: 40px;
+  background: rgba(10, 10, 10, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(212, 176, 97, 0.65);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 
+              0 0 25px rgba(212, 176, 97, 0.25),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  animation: triggerGlow 4s infinite alternate ease-in-out;
+}
+
+@keyframes triggerGlow {
+  0% {
+    border-color: rgba(212, 176, 97, 0.45);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 15px rgba(212, 176, 97, 0.15);
+  }
+  100% {
+    border-color: rgba(212, 176, 97, 0.85);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.7), 0 0 35px rgba(212, 176, 97, 0.35);
+  }
+}
+
+.atelier-trigger:hover {
+  transform: translateY(-4px) scale(1.02);
+  background: rgba(15, 15, 15, 0.85);
+  border-color: var(--gold-bright);
+}
+
+.atelier-trigger-icon-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(212, 176, 97, 0.15);
+  border: 1px solid rgba(212, 176, 97, 0.4);
+}
+
+.atelier-trigger-mic {
+  font-size: 16px;
+  color: var(--gold-bright);
+  animation: micPulse 2s infinite ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes micPulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 1; }
 }
 
 .atelier-trigger-pulse {
   position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
   border-radius: 50%;
-  border: 1px solid var(--gold);
-  opacity: 0.4;
+  border: 1.5px solid var(--gold-bright);
+  opacity: 0.5;
   animation: atelierPulse 3s infinite cubic-bezier(0.25, 1, 0.5, 1);
   pointer-events: none;
 }
 
 @keyframes atelierPulse {
-  0% { transform: scale(1); opacity: 0.4; }
-  50% { opacity: 0; }
-  100% { transform: scale(1.4); opacity: 0; }
+  0% { transform: scale(0.9); opacity: 0.6; }
+  50% { opacity: 0.2; }
+  100% { transform: scale(1.6); opacity: 0; }
 }
 
-.atelier-trigger-content {
+.atelier-trigger-info {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  gap: 8px;
-  overflow: hidden;
-  max-width: 0;
-  white-space: nowrap;
-  transition: max-width 0.5s cubic-bezier(0.25, 1, 0.5, 1), padding 0.5s;
 }
 
-.atelier-trigger-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--gold-bright);
-  box-shadow: 0 0 10px var(--gold-bright);
+.atelier-trigger-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: var(--gold-bright);
+  text-transform: uppercase;
+  margin-bottom: 2px;
 }
 
-.atelier-trigger-text {
+.atelier-trigger-subtitle {
   font-family: 'Fraunces', serif;
   font-style: italic;
-  font-size: 14px;
-  color: var(--gold);
-  letter-spacing: 0.05em;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink);
+  white-space: nowrap;
 }
 
-.atelier-trigger:hover {
-  width: 140px;
-  border-radius: 30px;
-  border-color: var(--gold-bright);
-  box-shadow: 0 16px 48px rgba(212, 176, 97, 0.15), 0 12px 32px rgba(0, 0, 0, 0.5);
-  background: rgba(10, 10, 10, 0.85);
+.atelier-trigger-live-tag {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 6px;
+  background: rgba(212, 176, 97, 0.12);
+  border: 1px solid rgba(212, 176, 97, 0.3);
+  padding: 2px 6px;
+  border-radius: 10px;
 }
 
-.atelier-trigger:hover .atelier-trigger-content {
-  max-width: 100px;
-  padding: 0 4px;
+.atelier-trigger-live-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #10b981; /* Premium green */
+  box-shadow: 0 0 8px #10b981;
+  animation: liveDotPulse 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes liveDotPulse {
+  0% { opacity: 0.4; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1.2); }
+}
+
+.atelier-trigger-live-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  color: var(--gold-bright);
+  font-weight: bold;
 }
 
 /* Side Panel Drawer */
@@ -2634,9 +2696,9 @@ td, th,
         Spend five minutes with <strong>Atelier</strong>, the AI creative director described in § IV. Tell it about your imaginary wedding. The Style Brief it generates is what every First Edition couple receives.
       </div>
     </div>
-    <a href="https://ai.studio/apps/57a10c98-f8d8-4155-b4f4-f19489feddb4" class="demo-callout-link" target="_blank" rel="noopener">
-      Open Demo<span class="arrow">→</span>
-    </a>
+    <button id="atelier-demo-trigger" class="demo-callout-link" style="cursor: pointer;">
+      TALK TO ATELIER AI<span class="arrow">→</span>
+    </button>
   </div>
 </div>
 
@@ -3612,10 +3674,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <!-- ATELIER VOICE AI WIDGET -->
 <div id="atelier-trigger" class="atelier-trigger">
-  <div class="atelier-trigger-pulse"></div>
-  <div class="atelier-trigger-content">
-    <span class="atelier-trigger-dot"></span>
-    <span class="atelier-trigger-text">Atelier</span>
+  <div class="atelier-trigger-icon-container">
+    <div class="atelier-trigger-pulse"></div>
+    <svg class="atelier-trigger-mic" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+      <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/>
+    </svg>
+  </div>
+  <div class="atelier-trigger-info">
+    <div class="atelier-trigger-title">ATELIER</div>
+    <div class="atelier-trigger-subtitle">Talk to AI Director</div>
+  </div>
+  <div class="atelier-trigger-live-tag">
+    <span class="atelier-trigger-live-dot"></span>
+    <span class="atelier-trigger-live-text">LIVE</span>
   </div>
 </div>
 
@@ -3902,6 +3973,7 @@ const LUXURY_FALLBACK_BRIEF = {
 // Orchestration Logic
 document.addEventListener('DOMContentLoaded', () => {
   const trigger = document.getElementById('atelier-trigger');
+  const demoTrigger = document.getElementById('atelier-demo-trigger');
   const panel = document.getElementById('atelier-panel');
   const backdrop = document.getElementById('atelier-backdrop');
   const closeBtn = document.getElementById('atelier-close-btn');
@@ -3945,11 +4017,19 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('resize', resizeCanvas);
   
   // Slide Drawer Toggles
-  trigger.addEventListener('click', () => {
+  const openPanel = () => {
     panel.classList.add('open');
     resizeCanvas();
     startCanvasAnimation();
-  });
+  };
+
+  trigger.addEventListener('click', openPanel);
+  if (demoTrigger) {
+    demoTrigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      openPanel();
+    });
+  }
   
   const closePanel = () => {
     panel.classList.remove('open');
