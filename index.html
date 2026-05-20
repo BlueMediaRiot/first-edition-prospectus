@@ -4130,7 +4130,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       // Dynamic WS protocol and target host resolution
       let wsHost = window.location.host;
-      if (window.location.protocol === 'file:') {
+      if (window.location.protocol === 'file:' || wsHost.startsWith('localhost:') || wsHost.startsWith('127.0.0.1:')) {
         wsHost = 'localhost:3000'; // Target local node dev instance
       }
       const wsProtocol = window.location.protocol === "https:" ? "wss://" : "ws://";
