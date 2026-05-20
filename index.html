@@ -4132,6 +4132,8 @@ document.addEventListener('DOMContentLoaded', () => {
       let wsHost = window.location.host;
       if (window.location.protocol === 'file:' || wsHost.startsWith('localhost:') || wsHost.startsWith('127.0.0.1:')) {
         wsHost = 'localhost:3000'; // Target local node dev instance
+      } else if (wsHost.includes('github.io')) {
+        wsHost = 'first-edition-atelier.onrender.com'; // Target hosted Render backend
       }
       const wsProtocol = window.location.protocol === "https:" ? "wss://" : "ws://";
       const wsUrl = `${wsProtocol}${wsHost}/api/live`;
