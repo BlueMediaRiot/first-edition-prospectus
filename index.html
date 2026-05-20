@@ -2210,7 +2210,27 @@ td, th,
   height: 100%;
   z-index: 1000;
   transition: right 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.7);
+  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.18);
+  
+  /* Lighter, calm, relaxing premium color variables */
+  --bg: #fdfcfa;
+  --bg-elev: #f7f5f0;
+  --bg-card: #f2efe9;
+  --bg-deep: #faf9f6;
+  
+  --ink: #1c1a17;
+  --ink-soft: #5c5850;
+  --ink-mute: #7d776d;
+  --ink-faint: #9c958a;
+  --ink-ghost: #dfdad0;
+  
+  --gold: #9e7b39;
+  --gold-deep: #6e5524;
+  --gold-bright: #caa454;
+  
+  --rule: rgba(28, 26, 23, 0.08);
+  --rule-strong: rgba(28, 26, 23, 0.16);
+  --rule-bold: rgba(28, 26, 23, 0.28);
 }
 
 .atelier-panel.open {
@@ -2223,7 +2243,7 @@ td, th,
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(5, 5, 5, 0.4);
+  background: rgba(247, 245, 240, 0.3);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   opacity: 0;
@@ -2240,11 +2260,11 @@ td, th,
 .atelier-panel-content {
   width: 100%;
   height: 100%;
-  background: rgba(10, 10, 10, 0.9);
+  background: rgba(249, 247, 243, 0.96);
   backdrop-filter: blur(32px);
   -webkit-backdrop-filter: blur(32px);
-  border-left: 2px solid var(--gold-bright);
-  box-shadow: -20px 0 80px rgba(0, 0, 0, 0.8), -10px 0 40px rgba(212, 176, 97, 0.05);
+  border-left: 1.5px solid rgba(158, 123, 57, 0.15);
+  box-shadow: -15px 0 50px rgba(0, 0, 0, 0.04), -5px 0 20px rgba(158, 123, 57, 0.02);
   padding: 40px 32px;
   display: flex;
   flex-direction: column;
@@ -2256,7 +2276,7 @@ td, th,
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--rule);
   padding-bottom: 16px;
 }
 
@@ -2315,9 +2335,9 @@ td, th,
   position: relative;
   width: 100%;
   height: 140px;
-  background: rgba(5, 5, 5, 0.4);
+  background: rgba(0, 0, 0, 0.025);
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--rule);
   overflow: hidden;
   margin-bottom: 24px;
   display: flex;
@@ -2339,7 +2359,7 @@ td, th,
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(212, 176, 97, 0.25) 0%, rgba(10, 10, 10, 0.95) 75%);
+  background: radial-gradient(circle, rgba(212, 176, 97, 0.35) 0%, rgba(247, 245, 240, 0.95) 75%);
   border: none;
   display: flex;
   align-items: center;
@@ -2348,7 +2368,7 @@ td, th,
   font-style: italic;
   font-weight: 500;
   font-size: 22px;
-  color: var(--gold-bright);
+  color: var(--gold);
   box-shadow: 0 0 25px rgba(212, 176, 97, 0.35);
   transition: all 0.3s;
   animation: pulseCoreAnim 3s infinite alternate ease-in-out;
@@ -2368,10 +2388,10 @@ td, th,
 /* Streaming Script Subtitles */
 .atelier-transcript-container {
   flex-grow: 1;
-  background: rgba(5, 5, 5, 0.35);
+  background: rgba(0, 0, 0, 0.015);
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.03);
-  border-left: 2px solid rgba(212, 176, 97, 0.35);
+  border: 1px solid var(--rule);
+  border-left: 2px solid rgba(158, 123, 57, 0.35);
   padding: 20px;
   margin-bottom: 24px;
   overflow-y: auto;
@@ -2420,10 +2440,10 @@ td, th,
   display: flex;
   justify-content: space-between;
   margin-bottom: 24px;
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(0, 0, 0, 0.012);
   border-radius: 6px;
   padding: 12px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--rule);
 }
 
 .atelier-phase {
@@ -2511,35 +2531,36 @@ td, th,
 
 .atelier-btn.btn-outline {
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--ink-ghost);
   color: var(--ink);
 }
 
 .atelier-btn.btn-outline:hover {
   border-color: var(--gold);
   color: var(--gold);
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(0, 0, 0, 0.015);
 }
 
 .atelier-btn.btn-danger {
-  background: rgba(220, 38, 38, 0.1);
+  background: rgba(220, 38, 38, 0.08);
   border: none;
-  color: #f87171;
-  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.1);
+  color: #c2410c;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.05);
 }
 
 .atelier-btn.btn-danger:hover {
-  background: rgba(220, 38, 38, 0.2);
-  color: #fff;
-  box-shadow: 0 6px 18px rgba(220, 38, 38, 0.25);
+  background: rgba(220, 38, 38, 0.15);
+  color: #991b1b;
+  box-shadow: 0 6px 18px rgba(220, 38, 38, 0.1);
 }
 
 /* Style Brief presentation */
 .atelier-brief-card {
   flex-grow: 1;
-  background: rgba(5, 5, 5, 0.35);
+  background: rgba(255, 255, 255, 0.75);
   border-radius: 8px;
-  border: 1px solid rgba(212, 176, 97, 0.15);
+  border: 1px solid rgba(158, 123, 57, 0.18);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.015);
   padding: 28px;
   overflow-y: auto;
   display: flex;
@@ -4442,12 +4463,17 @@ document.addEventListener('DOMContentLoaded', () => {
       
       // Dynamic WS protocol and target host resolution
       let wsHost = window.location.host;
-      if (window.location.protocol === 'file:' || wsHost.startsWith('localhost:') || wsHost.startsWith('127.0.0.1:')) {
+      const isLocal = window.location.protocol === 'file:' || 
+                      wsHost.startsWith('localhost:') || 
+                      wsHost.startsWith('127.0.0.1:') ||
+                      wsHost.startsWith('192.168.') ||
+                      wsHost.startsWith('10.');
+      if (isLocal) {
         wsHost = 'localhost:3000'; // Target local node dev instance
-      } else if (wsHost.includes('github.io')) {
-        wsHost = 'first-edition-atelier.onrender.com'; // Target hosted Render backend
+      } else {
+        wsHost = 'first-edition-atelier.onrender.com'; // Target hosted Render backend for all online environments
       }
-      const wsProtocol = window.location.protocol === "https:" ? "wss://" : "ws://";
+      const wsProtocol = window.location.protocol === "https:" || !isLocal ? "wss://" : "ws://";
       const wsUrl = `${wsProtocol}${wsHost}/api/live`;
       
       socket = new WebSocket(wsUrl);
