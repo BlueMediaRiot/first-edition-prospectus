@@ -2030,41 +2030,73 @@ td, th,
    ────────────────────────────────────────────────────────── */
 .atelier-trigger {
   position: fixed;
-  bottom: 32px;
-  right: 32px;
+  bottom: 40px;
+  right: 40px;
   z-index: 999;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 10px 20px 10px 14px;
+  gap: 16px;
+  padding: 12px 26px 12px 18px;
   border-radius: 40px;
-  background: rgba(10, 10, 10, 0.75);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1.5px solid rgba(212, 176, 97, 0.65);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 
-              0 0 25px rgba(212, 176, 97, 0.25),
-              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  background: radial-gradient(circle at 10% 10%, rgba(32, 28, 20, 0.96), rgba(10, 10, 10, 0.98));
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: none;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 
+              0 0 35px rgba(212, 176, 97, 0.45),
+              inset 0 1px 1px rgba(255, 255, 255, 0.15);
   transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-  animation: triggerGlow 4s infinite alternate ease-in-out;
+  animation: triggerGlow 3s infinite alternate ease-in-out;
+}
+
+/* Elegant Outer Pulsing Golden Halo to make trigger extremely noticeable */
+.atelier-trigger::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border-radius: 48px;
+  background: transparent;
+  box-shadow: 0 0 30px rgba(212, 176, 97, 0.5);
+  opacity: 0.8;
+  animation: triggerOuterPulse 2.5s infinite ease-in-out;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes triggerOuterPulse {
+  0% {
+    transform: scale(0.97);
+    box-shadow: 0 0 20px rgba(212, 176, 97, 0.35);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 50px rgba(212, 176, 97, 0.85);
+    opacity: 0.95;
+  }
+  100% {
+    transform: scale(0.97);
+    box-shadow: 0 0 20px rgba(212, 176, 97, 0.35);
+    opacity: 0.5;
+  }
 }
 
 @keyframes triggerGlow {
   0% {
-    border-color: rgba(212, 176, 97, 0.45);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 15px rgba(212, 176, 97, 0.15);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(212, 176, 97, 0.35);
   }
   100% {
-    border-color: rgba(212, 176, 97, 0.85);
-    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.7), 0 0 35px rgba(212, 176, 97, 0.35);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85), 0 0 50px rgba(212, 176, 97, 0.75);
   }
 }
 
 .atelier-trigger:hover {
-  transform: translateY(-4px) scale(1.02);
-  background: rgba(15, 15, 15, 0.85);
-  border-color: var(--gold-bright);
+  transform: translateY(-5px) scale(1.04);
+  background: radial-gradient(circle at 10% 10%, rgba(42, 36, 26, 0.98), rgba(12, 12, 12, 0.99));
 }
 
 .atelier-trigger-icon-container {
@@ -2072,15 +2104,15 @@ td, th,
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: rgba(212, 176, 97, 0.15);
-  border: 1px solid rgba(212, 176, 97, 0.4);
+  background: rgba(212, 176, 97, 0.22);
+  border: none;
 }
 
 .atelier-trigger-mic {
-  font-size: 16px;
+  font-size: 18px;
   color: var(--gold-bright);
   animation: micPulse 2s infinite ease-in-out;
   display: flex;
@@ -2089,26 +2121,26 @@ td, th,
 }
 
 @keyframes micPulse {
-  0%, 100% { transform: scale(1); opacity: 0.8; }
+  0%, 100% { transform: scale(1); opacity: 0.85; }
   50% { transform: scale(1.15); opacity: 1; }
 }
 
 .atelier-trigger-pulse {
   position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   border-radius: 50%;
-  border: 1.5px solid var(--gold-bright);
-  opacity: 0.5;
+  background: rgba(212, 176, 97, 0.3);
+  box-shadow: 0 0 15px var(--gold-bright);
   animation: atelierPulse 3s infinite cubic-bezier(0.25, 1, 0.5, 1);
   pointer-events: none;
 }
 
 @keyframes atelierPulse {
-  0% { transform: scale(0.9); opacity: 0.6; }
-  50% { opacity: 0.2; }
+  0% { transform: scale(0.9); opacity: 0.7; }
+  50% { opacity: 0.25; }
   100% { transform: scale(1.6); opacity: 0; }
 }
 
@@ -2120,7 +2152,7 @@ td, th,
 
 .atelier-trigger-title {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.25em;
   color: var(--gold-bright);
@@ -2131,7 +2163,7 @@ td, th,
 .atelier-trigger-subtitle {
   font-family: 'Fraunces', serif;
   font-style: italic;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 400;
   color: var(--ink);
   white-space: nowrap;
@@ -2140,31 +2172,31 @@ td, th,
 .atelier-trigger-live-tag {
   display: flex;
   align-items: center;
-  gap: 4px;
-  margin-left: 6px;
-  background: rgba(212, 176, 97, 0.12);
-  border: 1px solid rgba(212, 176, 97, 0.3);
-  padding: 2px 6px;
-  border-radius: 10px;
+  gap: 5px;
+  margin-left: 8px;
+  background: rgba(212, 176, 97, 0.18);
+  border: none;
+  padding: 3px 8px;
+  border-radius: 12px;
 }
 
 .atelier-trigger-live-dot {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: #10b981; /* Premium green */
-  box-shadow: 0 0 8px #10b981;
+  box-shadow: 0 0 10px #10b981;
   animation: liveDotPulse 1.5s infinite alternate ease-in-out;
 }
 
 @keyframes liveDotPulse {
   0% { opacity: 0.4; transform: scale(0.8); }
-  100% { opacity: 1; transform: scale(1.2); }
+  100% { opacity: 1; transform: scale(1.25); }
 }
 
 .atelier-trigger-live-text {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 8px;
+  font-size: 9px;
   color: var(--gold-bright);
   font-weight: bold;
 }
@@ -2307,8 +2339,8 @@ td, th,
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: rgba(10, 10, 10, 0.85);
-  border: 1.5px solid var(--gold-bright);
+  background: radial-gradient(circle, rgba(212, 176, 97, 0.25) 0%, rgba(10, 10, 10, 0.95) 75%);
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2317,21 +2349,19 @@ td, th,
   font-weight: 500;
   font-size: 22px;
   color: var(--gold-bright);
-  box-shadow: 0 0 20px rgba(212, 176, 97, 0.15);
+  box-shadow: 0 0 25px rgba(212, 176, 97, 0.35);
   transition: all 0.3s;
   animation: pulseCoreAnim 3s infinite alternate ease-in-out;
 }
 
 @keyframes pulseCoreAnim {
   0% {
-    border-color: rgba(212, 176, 97, 0.3);
-    box-shadow: 0 0 20px rgba(212, 176, 97, 0.15), inset 0 0 5px rgba(212, 176, 97, 0.05);
+    box-shadow: 0 0 25px rgba(212, 176, 97, 0.25), inset 0 0 8px rgba(212, 176, 97, 0.1);
     transform: scale(1);
   }
   100% {
-    border-color: var(--gold-bright);
-    box-shadow: 0 0 40px rgba(212, 176, 97, 0.55), inset 0 0 15px rgba(212, 176, 97, 0.25);
-    transform: scale(1.06);
+    box-shadow: 0 0 50px rgba(212, 176, 97, 0.7), inset 0 0 20px rgba(212, 176, 97, 0.35);
+    transform: scale(1.08);
   }
 }
 
@@ -2448,11 +2478,16 @@ td, th,
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   box-sizing: border-box;
+  outline: none;
+}
+
+.atelier-btn:focus-visible {
+  box-shadow: 0 0 0 2px var(--bg-deep), 0 0 0 4px var(--gold-bright) !important;
 }
 
 .atelier-btn.btn-gold {
   background: var(--gold);
-  border: 1px solid var(--gold);
+  border: none;
   color: var(--bg-deep);
   box-shadow: 0 4px 15px rgba(212, 176, 97, 0.15);
   animation: btnGoldGlow 2.5s infinite alternate ease-in-out;
@@ -2460,7 +2495,6 @@ td, th,
 
 .atelier-btn.btn-gold:hover {
   background: var(--gold-bright);
-  border-color: var(--gold-bright);
   transform: translateY(-2px);
   box-shadow: 0 8px 28px rgba(212, 176, 97, 0.45);
   animation: none;
@@ -2489,14 +2523,15 @@ td, th,
 
 .atelier-btn.btn-danger {
   background: rgba(220, 38, 38, 0.1);
-  border: 1px solid rgba(220, 38, 38, 0.3);
+  border: none;
   color: #f87171;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.1);
 }
 
 .atelier-btn.btn-danger:hover {
   background: rgba(220, 38, 38, 0.2);
-  border-color: #f87171;
   color: #fff;
+  box-shadow: 0 6px 18px rgba(220, 38, 38, 0.25);
 }
 
 /* Style Brief presentation */
@@ -4310,11 +4345,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const pulseScale = 1.0 + (combinedAmp * 0.25);
     pulseCore.style.transform = `scale(${pulseScale})`;
     if (combinedAmp > 0.05) {
-      pulseCore.style.borderColor = 'var(--gold-bright)';
-      pulseCore.style.boxShadow = `0 0 ${20 + (combinedAmp * 40)}px rgba(212, 176, 97, ${0.1 + (combinedAmp * 0.3)})`;
+      pulseCore.style.boxShadow = `0 0 ${25 + (combinedAmp * 50)}px rgba(212, 176, 97, ${0.35 + (combinedAmp * 0.45)}), inset 0 0 15px rgba(212, 176, 97, 0.25)`;
     } else {
-      pulseCore.style.borderColor = 'rgba(212, 176, 97, 0.2)';
-      pulseCore.style.boxShadow = '0 0 20px rgba(212, 176, 97, 0.05)';
+      pulseCore.style.boxShadow = '0 0 25px rgba(212, 176, 97, 0.35), inset 0 0 8px rgba(212, 176, 97, 0.1)';
     }
     
     // Draw 3 layered golden liquid sinewaves
